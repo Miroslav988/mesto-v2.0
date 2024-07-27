@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Miroslav Bakaev" />
+    <meta name="description" content="Mesto - a social network for travelers" />
+    <meta
+      name="keywords"
+      content="travel, social network, mesto, photography"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link href="normalize.css" rel="stylesheet" />
+    <title>Mesto</title>
+  </head>
+  <body>
+    <div class="mainContent">
+      <header class="header">
+        <a href="#">
+          <img class="logo" src="images/Vector.svg" alt="logo" />
+        </a>
+      </header>
+      <div class="userInfo">
+        <div class="userDataAndBtn">
+          <img
+            class="userPhoto"
+            src="images/image.jpg"
+            alt="user profile photo"
+          />
+          <div class="position">
+            <div class="userNameContainer">
+              <h1 class="userName">Жак-Ив Кусто</h1>
+              <button
+                type="button"
+                class="edit"
+                data-form="editUserInfoModal"
+              ></button>
+            </div>
+            <p class="userBio">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="addBtn" type="button" data-form="cardInfoModal">
+          +
+        </button>
+      </div>
+
+      <ul class="cardList"></ul>
+
+      <div class="modalCover" id="editUserInfoModal">
+        <form name="userInfoModal" class="formContainer">
+          <img
+            class="closeBtn closeUserInfoModal"
+            src="images/Close Icon.png"
+          /><!--нажатие на img = нажатие на оверлей-->
+          <h3 class="formTitle">О себе</h3>
+          <div class="userForm">
+            <input
+              class="input"
+              id="inputUserName"
+              name="name"
+              type="text"
+              placeholder="Ваше имя"
+              autofocus
+              maxlength="40"
+            />
+            <input
+              class="input"
+              id="inputUserBio"
+              name="bio"
+              type="text"
+              placeholder="О себе"
+              maxlength="40"
+            />
+            <input
+              class="input"
+              id="inputUserPhoto"
+              name="photo"
+              type="url"
+              placeholder="Ссылка на ваше фото"
+              maxlength="200"
+            />
+            <button class="submitUserBtn" type="submit">Применить</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modalCover" id="cardInfoModal">
+        <form name="cardInfoModal" class="formContainer">
+          <img
+            class="closeBtn closeCardInfoModal"
+            src="images/Close Icon.png"
+          /><!--нажатие на img = нажатие на оверлей-->
+          <h3 class="formTitle">Новое место</h3>
+          <div class="userForm">
+            <input
+              class="input"
+              id="inputCardName"
+              name="cardDescription"
+              type="text"
+              placeholder="Название места"
+              maxlength="40"
+            />
+            <input
+              class="input"
+              id="inputCardPhoto"
+              name="cardPhoto"
+              type="url"
+              placeholder="Ссылка на картинку"
+              maxlength="200"
+            />
+            <button class="submitBtn" type="submit">Создать</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modalCover">
+        <div class="photoAndText">
+          <img class="closeBtn closeEnlargeBtn" src="images/Close Icon.png" />
+          <figure>
+            <img class="enlargedPhoto" src="#" alt="#" />
+            <figcaption class="enlargedText"></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <template class="newUserCard">
+        <li class="card">
+          <button class="delete" type="button"></button>
+          <button class="enlarge">
+            <img
+              class="cardPhoto"
+              src="#"
+              alt="#"
+              onerror="this.src = 'images/photoNet.jpg'"
+            />
+          </button>
+          <footer>
+            <h3 class="cardName"></h3>
+            <button class="like" type="button"></button>
+          </footer>
+        </li>
+      </template>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
