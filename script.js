@@ -142,3 +142,26 @@ cardDataForm.addEventListener("input", () => {
 userDataForm.addEventListener("input", () => {
   checkValidation(userDataForm, submitUserBtn);
 });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    const modalOpened = document.querySelector(".modalOpened");
+    if (modalOpened) {
+      modalOpened.classList.remove("modalOpened");
+      cardDataForm.reset();
+      userDataForm.reset();
+    }
+  }
+});
+cardDataForm.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submitBtn.click();
+  }
+});
+
+userDataForm.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submitUserBtn.click();
+  }
+});
