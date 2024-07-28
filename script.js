@@ -27,18 +27,18 @@ const cardTitleInput = cardDataForm.elements.cardDescription;
 const cardPhotoInput = cardDataForm.elements.cardPhoto;
 //===============================================================================================
 
+const checkValidation = (form, formBtn) => {
+  if (form.checkValidity()) {
+    formBtn.removeAttribute("disabled");
+  } else {
+    formBtn.setAttribute("disabled", "true");
+  }
+};
 const closeModal = () => {
   event.target.closest(".modalCover").classList.remove("modalOpened");
   cardDataForm.reset();
   userDataForm.reset();
 };
-forms.forEach((form) => {
-  form.addEventListener("click", (event) => {
-    if (!event.target.closest(".closeBtn")) {
-      event.stopPropagation();
-    }
-  });
-});
 
 const openModal = () => {
   const formId = event.target.dataset.form;
@@ -124,7 +124,21 @@ const enlargeUserCard = () => {
   openModalEnlarge();
 };
 
+forms.forEach((form) => {
+  form.addEventListener("click", (event) => {
+    if (!event.target.closest(".closeBtn")) {
+      event.stopPropagation();
+    }
+  });
+});
+
 submitBtn.addEventListener("click", addUserCard);
 addNewCardButton.addEventListener("click", openModal);
 editUserInfoButton.addEventListener("click", openModal);
 submitUserBtn.addEventListener("click", changeUserInfo);
+cardDataForm.addEventListener("input", () => {
+  checkValidation(cardDataForm, submitBtn);
+});
+userDataForm.addEventListener("input", () => {
+  checkValidation(userDataForm, submitUserBtn);
+});
