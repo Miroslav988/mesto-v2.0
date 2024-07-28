@@ -53,7 +53,7 @@
       <ul class="cardList"></ul>
 
       <div class="modalCover" id="editUserInfoModal">
-        <form name="userInfoModal" class="formContainer">
+        <form name="userInfoModal" class="formContainer" novalidate>
           <img
             class="closeBtn closeUserInfoModal"
             src="images/Close Icon.png"
@@ -61,6 +61,7 @@
           <h3 class="formTitle">О себе</h3>
           <div class="userForm">
             <input
+              required
               class="input"
               id="inputUserName"
               name="name"
@@ -70,6 +71,7 @@
               maxlength="40"
             />
             <input
+              required
               class="input"
               id="inputUserBio"
               name="bio"
@@ -78,6 +80,7 @@
               maxlength="40"
             />
             <input
+              required
               class="input"
               id="inputUserPhoto"
               name="photo"
@@ -91,7 +94,7 @@
       </div>
 
       <div class="modalCover" id="cardInfoModal">
-        <form name="cardInfoModal" class="formContainer">
+        <form name="cardInfoModal" class="formContainer" novalidate>
           <img
             class="closeBtn closeCardInfoModal"
             src="images/Close Icon.png"
@@ -99,6 +102,7 @@
           <h3 class="formTitle">Новое место</h3>
           <div class="userForm">
             <input
+              required
               class="input"
               id="inputCardName"
               name="cardDescription"
@@ -107,6 +111,7 @@
               maxlength="40"
             />
             <input
+              required
               class="input"
               id="inputCardPhoto"
               name="cardPhoto"
@@ -119,7 +124,7 @@
         </form>
       </div>
 
-      <div class="modalCover">
+      <div class="modalCover" id="enlargeContainer">
         <div class="photoAndText">
           <img class="closeBtn closeEnlargeBtn" src="images/Close Icon.png" />
           <figure>

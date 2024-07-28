@@ -97,9 +97,12 @@ body {
   margin-right: 20px;
   background-color: white;
 }
+.active {
+  background-image: url(images/active\ like.svg);
+}
 .like:hover {
   cursor: pointer;
-  background-image: url(images/hover\ like.svg);
+  opacity: 0.6;
 }
 .card {
   background-color: white;
@@ -181,7 +184,7 @@ footer {
   -webkit-backdrop-filter: blur(4px) grayscale(50%);
   visibility: hidden;
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .modalOpened {
   visibility: visible;
