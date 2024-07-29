@@ -215,8 +215,6 @@ footer {
   margin-bottom: auto;
 }
 
-.closeNone {
-}
 .input {
   width: 100%;
   border: none;
@@ -277,7 +275,6 @@ input::placeholder {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 100;
 }
 .closeBtn:hover {
   opacity: 0.7;
@@ -315,21 +312,8 @@ input:focus {
   margin: auto;
 }
 .closeEnlargeBtn {
-  position: absolute;
   right: -38px;
   top: 30px;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  background-image: url(images/Close\ Icon.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.closeEnlargeBtn:hover {
-  cursor: pointer;
-  background-image: url(images/Close\ Icon\ gray.svg);
 }
 
 .submitBtn:disabled {
@@ -343,44 +327,45 @@ input:focus {
   /* mobile - max-width: 767px */
   /* tablet - min-width: 768px and max-width: 1023px */
   /* desktop - min-width: 1024px */
-  .main-content {
+  .mainContent {
     display: flex;
     flex-direction: column;
     margin: 20px;
   }
-  .user-photo {
+  .userPhoto {
     margin: 0;
   }
-  .user-and-btn {
+  .userDataAndBtn {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 36px;
   }
   .position {
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .user-name-container {
+  .userNameContainer {
     margin-top: 30px;
     margin-bottom: 14px;
   }
-  .user-info {
+  .userInfo {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
   }
-  .user-name {
+  .userName {
     font-size: 27px;
   }
-  .user-bio {
+  .userBio {
     margin: 0;
     font-size: 14px;
   }
-  .add-btn {
+  .addBtn {
     width: 100%;
   }
   .edit {
@@ -388,7 +373,7 @@ input:focus {
     height: 18px;
     margin-left: 7px;
   }
-  .name-edit {
+  .nameEdit {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -404,19 +389,18 @@ input:focus {
     width: 104px;
     height: 24px;
   }
-  .form-container {
+  .formContainer {
     margin-top: 40%;
     width: 238px;
     height: 272px;
     padding: 25px 22px;
     font-size: 18px;
   }
-  .submit-button {
+  .submitBtn {
     margin-top: 0;
     font-size: 14px;
   }
-  .close-button,
-  .close-enlarge {
+  .closeBtn {
     width: 20px;
     height: 20px;
     right: 0;

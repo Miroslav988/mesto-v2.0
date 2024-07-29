@@ -14,9 +14,11 @@ const enlargeContainer = document.querySelector(".photoAndText");
 // INPUTS USER
 const forms = document.querySelectorAll(".formContainer");
 const userDataForm = document.forms.userInfoModal;
+
 const nameEditInput = userDataForm.elements.name;
 const bioEditInput = userDataForm.elements.bio;
 const photoEditInput = userDataForm.elements.photo;
+
 const userNameElement = document.querySelector(".userName");
 const userBioElement = document.querySelector(".userBio");
 const userPhotoElement = document.querySelector(".userPhoto");
@@ -50,6 +52,8 @@ const openModal = () => {
 
   nameEditInput.value = userNameElement.textContent;
   bioEditInput.value = userBioElement.textContent;
+  submitUserBtn.setAttribute("disabled", "true");
+  submitBtn.setAttribute("disabled", "true");
 };
 
 const openModalEnlarge = () => {

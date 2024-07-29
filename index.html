@@ -54,10 +54,13 @@
 
       <div class="modalCover" id="editUserInfoModal">
         <form name="userInfoModal" class="formContainer user" novalidate>
-          <img
-            class="closeBtn closeUserInfoModal"
-            src="images/Close Icon.png"
-          /><!--нажатие на img = нажатие на оверлей-->
+          <button type="button" class="closeBtn">
+            <img
+              class="closeUserInfoModal"
+              src="images/Close Icon.png"
+              alt=""
+            /></button
+          ><!--нажатие на img = нажатие на оверлей-->
           <h3 class="formTitle">О себе</h3>
           <div class="userForm">
             <input
@@ -97,10 +100,12 @@
 
       <div class="modalCover" id="cardInfoModal">
         <form name="cardInfoModal" class="formContainer" novalidate>
-          <img
-            class="closeBtn closeCardInfoModal"
-            src="images/Close Icon.png"
-          /><!--нажатие на img = нажатие на оверлей-->
+          <button type="button" class="closeBtn">
+            <img
+              class="closeCardInfoModal"
+              src="images/Close Icon.png"
+            /></button
+          ><!--нажатие на img = нажатие на оверлей-->
           <h3 class="formTitle">Новое место</h3>
           <div class="userForm">
             <input
@@ -130,7 +135,9 @@
 
       <div class="modalCover" id="enlargeContainer">
         <div class="photoAndText">
-          <img class="closeBtn closeEnlargeBtn" src="images/Close Icon.png" />
+          <button class="closeBtn closeEnlargeBtn">
+            <img src="images/Close Icon.png" />
+          </button>
           <figure>
             <img class="enlargedPhoto" src="#" alt="#" />
             <figcaption class="enlargedText"></figcaption>
