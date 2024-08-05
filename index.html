@@ -53,7 +53,7 @@
       <ul class="cardList"></ul>
 
       <div class="modalCover" id="editUserInfoModal">
-        <form name="userInfoModal" class="formContainer user" novalidate>
+        <form name="userInfoModal" class="formContainer">
           <button type="button" class="closeBtn">
             <img
               class="closeUserInfoModal"
@@ -91,7 +91,12 @@
               placeholder="Ссылка на ваше фото"
               maxlength="200"
             />
-            <button class="submitUserBtn" type="submit" disabled="true">
+            <button
+              class="submitButton"
+              data-action="userInfoModal"
+              type="button"
+              disabled="true"
+            >
               Применить
             </button>
           </div>
@@ -99,7 +104,7 @@
       </div>
 
       <div class="modalCover" id="cardInfoModal">
-        <form name="cardInfoModal" class="formContainer" novalidate>
+        <form name="cardInfoModal" class="formContainer">
           <button type="button" class="closeBtn">
             <img
               class="closeCardInfoModal"
@@ -126,7 +131,12 @@
               placeholder="Ссылка на картинку"
               maxlength="200"
             />
-            <button class="submitBtn" type="submit" disabled="true">
+            <button
+              class="submitButton"
+              data-action="cardInfoModal"
+              type="button"
+              disabled="true"
+            >
               Создать
             </button>
           </div>
@@ -164,5 +174,6 @@
       </template>
     </div>
     <script src="script.js"></script>
+    <script src="client.js"></script>
   </body>
 </html>

@@ -2,15 +2,14 @@
 const addNewCardButton = document.querySelector(".addBtn");
 const editUserInfoButton = document.querySelector(".edit");
 
-const submitUserBtn = document.querySelector(".submitUserBtn");
-const submitBtn = document.querySelector(".submitBtn");
-
-//===============================================================================================
+const submitBtn = document.querySelectorAll(".submitButton");
 
 // DOM Elements
 const main = document.querySelector(".cardList");
 const enlargeContainer = document.querySelector(".photoAndText");
 
+const enlargePhotoModal = document.querySelector(".enlargedPhoto");
+const enlargeDescriptionModal = document.querySelector(".enlargedText");
 // INPUTS USER
 const forms = document.querySelectorAll(".formContainer");
 const userDataForm = document.forms.userInfoModal;
@@ -23,23 +22,24 @@ const userNameElement = document.querySelector(".userName");
 const userBioElement = document.querySelector(".userBio");
 const userPhotoElement = document.querySelector(".userPhoto");
 
-//INPUTS CARD
+// INPUTS CARD
 const cardDataForm = document.forms.cardInfoModal;
 const cardTitleInput = cardDataForm.elements.cardDescription;
 const cardPhotoInput = cardDataForm.elements.cardPhoto;
+
 //===============================================================================================
 
-const checkValidation = (form, formBtn) => {
+const checkValidation = (form) => {
   if (form.checkValidity()) {
-    formBtn.removeAttribute("disabled");
+    submitBtn.forEach((btn) => btn.removeAttribute("disabled"));
   } else {
-    formBtn.setAttribute("disabled", "true");
+    submitBtn.forEach((btn) => btn.setAttribute("disabled", "true"));
   }
 };
+
 const closeModal = () => {
   event.target.closest(".modalCover").classList.remove("modalOpened");
-  cardDataForm.reset();
-  userDataForm.reset();
+  forms.forEach((form) => form.reset());
 };
 
 const openModal = () => {
@@ -52,8 +52,7 @@ const openModal = () => {
 
   nameEditInput.value = userNameElement.textContent;
   bioEditInput.value = userBioElement.textContent;
-  submitUserBtn.setAttribute("disabled", "true");
-  submitBtn.setAttribute("disabled", "true");
+  submitBtn.forEach((btn) => btn.setAttribute("disabled", "true"));
 };
 
 const openModalEnlarge = () => {
@@ -66,7 +65,6 @@ const openModalEnlarge = () => {
 
 const changeUserInfo = () => {
   event.preventDefault();
-
   userNameElement.textContent = nameEditInput.value;
   userBioElement.textContent = bioEditInput.value;
   userPhotoElement.src = photoEditInput.value;
@@ -93,23 +91,18 @@ const addUserCard = () => {
   const like = userCard.querySelector(".like");
   const enlargeBtn = userCard.querySelector(".enlarge");
   main.appendChild(userCard);
-  closeModal();
 
+  const deleteUserCard = () => event.target.closest(".card").remove();
   enlargeBtn.addEventListener("click", enlargeUserCard);
   like.addEventListener("click", switchLikeStatus);
   deleteBtn.addEventListener("click", deleteUserCard);
+  closeModal();
 };
 
 const switchLikeStatus = () => {
   event.preventDefault();
-  const like = event.target;
-  like.classList.contains("active")
-    ? like.classList.remove("active")
-    : like.classList.add("active");
-};
-
-const deleteUserCard = () => {
-  event.target.closest(".card").remove();
+  const like = event.target.classList;
+  like.contains("active") ? like.remove("active") : like.add("active");
 };
 
 const enlargeUserCard = () => {
@@ -117,9 +110,6 @@ const enlargeUserCard = () => {
   const enlargeCardImg = enlargeCard.querySelector(".cardPhoto");
   let enlargedPhoto = enlargeCardImg.src;
   let enlargedDescription = enlargeCardImg.alt;
-
-  const enlargePhotoModal = document.querySelector(".enlargedPhoto");
-  const enlargeDescriptionModal = document.querySelector(".enlargedText");
 
   enlargePhotoModal.src = enlargedPhoto;
   enlargePhotoModal.alt = enlargedDescription;
@@ -136,36 +126,46 @@ forms.forEach((form) => {
   });
 });
 
-submitBtn.addEventListener("click", addUserCard);
+// сабмиты форм, привызянные к кнопкам
+
+const submitOpenedForm = (btnId) => {
+  switch (btnId) {
+    case "userInfoModal":
+      changeUserInfo();
+      break;
+    case "cardInfoModal":
+      addUserCard();
+      break;
+  }
+};
+
 addNewCardButton.addEventListener("click", openModal);
 editUserInfoButton.addEventListener("click", openModal);
-submitUserBtn.addEventListener("click", changeUserInfo);
 cardDataForm.addEventListener("input", () => {
-  checkValidation(cardDataForm, submitBtn);
+  checkValidation(cardDataForm);
 });
 userDataForm.addEventListener("input", () => {
-  checkValidation(userDataForm, submitUserBtn);
+  checkValidation(userDataForm);
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     const modalOpened = document.querySelector(".modalOpened");
     if (modalOpened) {
-      modalOpened.classList.remove("modalOpened");
-      cardDataForm.reset();
-      userDataForm.reset();
     }
   }
 });
-cardDataForm.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+submitBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const currentBtn = event.target;
+    const btnId = currentBtn.dataset.action;
     event.preventDefault();
-    submitBtn.click();
-  }
+    submitOpenedForm(btnId);
+  });
 });
-
-userDataForm.addEventListener("keydown", (event) => {
+//
+cardDataForm.addEventListener("keydown", (event) => {
+  const modalOpened = document.querySelector(".modalOpened");
   if (event.key === "Enter") {
     event.preventDefault();
-    submitUserBtn.click();
   }
 });
